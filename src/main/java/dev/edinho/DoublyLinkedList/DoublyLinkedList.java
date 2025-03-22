@@ -9,19 +9,14 @@ public class DoublyLinkedList {
     public void add(int value) {
         Node newNode = new Node(value);
 
-        if (head == null) {
-            head = newNode;
-            tail = head;
-        } else {
-            Node aux = head;
-
-            while (aux.hasNext()) {
-                aux = aux.getNext();
-            }
-
-            aux.setNext(newNode);
-            newNode.setPrev(aux);
+        if (tail == null) {
             tail = newNode;
+            head = tail;
+        } else {
+            Node aux = tail;
+            tail = newNode;
+            tail.setPrev(aux);
+            aux.setNext(tail);
         }
         size++;
     }
@@ -60,9 +55,10 @@ public class DoublyLinkedList {
         } else {
             Node aux = head;
             head = newNode;
-            newNode.setNext(aux);
-            aux.setPrev(newNode);
+            head.setNext(aux);
+            aux.setPrev(head);
         }
+        size++;
     }
 
     public void insertEnd(int value) {
@@ -77,5 +73,13 @@ public class DoublyLinkedList {
             newNode.setPrev(aux);
             aux.setNext(newNode);
         }
+        size++;
+    }
+
+    public Node remove(int index) throws Exception {
+        if (index < 0 || index > size) {
+            throw new Exception("IndexOutOfBound");
+        }
+        return null;
     }
 }
