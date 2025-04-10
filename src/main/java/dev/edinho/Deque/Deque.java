@@ -1,19 +1,14 @@
 package dev.edinho.Deque;
 
-import java.util.NoSuchElementException;
-
 public class Deque {
     private Node head = null;
-    private Node tail = null;
-
     public Deque() {}
 
     public void insertStart(int value) {
         Node node = new Node(value);
 
         if (head == null) {
-            head = node; 
-            tail = node;
+            head = node;
         } else {
             Node aux = head;
             head = node;
